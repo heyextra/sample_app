@@ -72,6 +72,9 @@ RUN bundle install && rm -rf vendor/bundle/ruby/*/cache
 # install deployment packages
 
 FROM base
+#install image magick
+RUN apt-get update && apt-get install -y \
+    imagemagick libmagickwand-dev --no-install-recommends
 
 ARG DEPLOY_PACKAGES="postgresql-client file vim curl gzip libsqlite3-0"
 ENV DEPLOY_PACKAGES=${DEPLOY_PACKAGES}
